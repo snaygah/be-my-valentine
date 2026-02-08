@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      background: #ffe6ec;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 80px;
+      color: #c32c6c;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 260px;
+      max-width: 80%;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 24px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin: 20px;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #e6005c;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ff8da1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will You Be My Valentine? 💖</h1>
+
+  <!-- GIF -->
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZvOGNjdGF6eXhubDkybzgyYmJmNmg2cnNqaGEyNjMxajZuZ3Z5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1lI2fw1VE0LUFUhFqe/giphy.gif"
+       alt="Cute Valentine GIF">
+
+  <div>
+    <button id="yesBtn">Yes 💞</button>
+    <button id="noBtn">No 😢</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    let yesScale = 1;
+    let noClicks = 0;
+
+    const noMessages = [
+      "Are you sure?",
+      "Babe click yes",
+      "You're sleeping outside"
+    ];
+
+    noBtn.onclick = () => {
+      if (noClicks < noMessages.length) {
+        noBtn.textContent = noMessages[noClicks];
+      }
+
+      yesScale += 0.25;
+      yesBtn.style.transform = `scale(${yesScale})`;
+
+      noClicks++;
+    };
+
+    yesBtn.onclick = () => {
+      document.body.innerHTML = `
+        <h1>YAY 💘</h1>
+        <p style="font-size: 28px;">Best decision you've made today 😌💞</p>
+        <p style="font-size: 22px;">Happy Valentine’s Day!</p>
+      `;
+    };
+  </script>
+
+</body>
+</html>
