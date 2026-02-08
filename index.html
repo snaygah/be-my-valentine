@@ -8,7 +8,7 @@
       background: #ffe6ec;
       text-align: center;
       font-family: Arial, sans-serif;
-      padding-top: 80px;
+      padding-top: 60px;
       color: #c32c6c;
     }
 
@@ -18,19 +18,26 @@
     }
 
     img {
-      width: 260px;
-      max-width: 80%;
-      border-radius: 20px;
-      margin-bottom: 30px;
+      width: 360px; /* BIGGER GIF */
+      max-width: 90%;
+      border-radius: 24px;
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px; /* MORE SPACE BETWEEN BUTTONS */
+      flex-wrap: wrap;
     }
 
     button {
-      padding: 15px 30px;
+      padding: 18px 36px;
       font-size: 24px;
       border: none;
-      border-radius: 14px;
+      border-radius: 16px;
       cursor: pointer;
-      margin: 20px;
       transition: all 0.3s ease;
     }
 
@@ -49,11 +56,11 @@
 
   <h1>Will You Be My Valentine? 💖</h1>
 
-  <!-- GIF -->
-  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZvOGNjdGF6eXhubDkybzgyYmJmNmg2cnNqaGEyNjMxajZuZ3Z5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1lI2fw1VE0LUFUhFqe/giphy.gif"
-       alt="Cute Valentine GIF">
+  <img id="gif" 
+       src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZvOGNjdGF6eXhubDkybzgyYmJmNmg2cnNqaGEyNjMxajZuZ3Z5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1lI2fw1VE0LUFUhFqe/giphy.gif"
+       alt="Valentine GIF">
 
-  <div>
+  <div class="buttons">
     <button id="yesBtn">Yes 💞</button>
     <button id="noBtn">No 😢</button>
   </div>
@@ -61,6 +68,7 @@
   <script>
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
+    const gif = document.getElementById("gif");
 
     let yesScale = 1;
     let noClicks = 0;
@@ -71,23 +79,38 @@
       "You're sleeping outside"
     ];
 
+    const noGifs = [
+      "https://tenor.com/view/cutemort-scaredmort-madagascar-mort-frightened-gif-16501691861099435980.gif",
+      "https://tenor.com/view/madagascar-mort-scared-crying-cute-gif-21551289.gif",
+      "https://tenor.com/view/angry-cute-cute-angry-mort-angry-take-that-back-take-that-back-gif-17847504765395617219.gif"
+    ];
+
     noBtn.onclick = () => {
       if (noClicks < noMessages.length) {
         noBtn.textContent = noMessages[noClicks];
       }
 
-      yesScale += 0.25;
+      if (noClicks < noGifs.length) {
+        gif.src = noGifs[noClicks];
+      }
+
+      yesScale += 0.3;
       yesBtn.style.transform = `scale(${yesScale})`;
 
       noClicks++;
     };
 
     yesBtn.onclick = () => {
-      document.body.innerHTML = `
-        <h1>YAY 💘</h1>
-        <p style="font-size: 28px;">Best decision you've made today 😌💞</p>
-        <p style="font-size: 22px;">Happy Valentine’s Day!</p>
-      `;
+	 gif.src = "https://tenor.com/view/mort-gif-70987908735339905.gif";
+
+      document.querySelector("h1").textContent = "YAY 💘";
+      document.querySelector(".buttons").remove();
+
+      const msg = document.createElement("p");
+      msg.style.fontSize = "28px";
+      msg.style.marginTop = "20px";
+      msg.innerHTML = "Best decision you've made today 😌💞<br>Happy Valentine’s Day!";
+      document.body.appendChild(msg);
     };
   </script>
 
