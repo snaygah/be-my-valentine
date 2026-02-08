@@ -100,19 +100,23 @@
       noClicks++;
     };
 
-    yesBtn.onclick = () => {
-	 gif.src = "https://tenor.com/view/mort-gif-70987908735339905.gif";
+yesBtn.onclick = () => {
+  gif.src = "https://tenor.com/view/mort-gif-70987908735339905.gif";
+  gif.style.width = "480px";   // 👈 BIG FINAL GIF
+  gif.style.maxWidth = "95%";
 
-      document.querySelector("h1").textContent = "YAY 💘";
-      document.querySelector(".buttons").remove();
+  document.querySelector("h1").textContent = "YAY 💘";
+  document.querySelector(".buttons").remove();
 
-      const msg = document.createElement("p");
-      msg.style.fontSize = "28px";
-      msg.style.marginTop = "20px";
-      msg.innerHTML = "Best decision you've made today 😌💞<br>Happy Valentine’s Day!";
-      document.body.appendChild(msg);
-    };
+  const msg = document.createElement("p");
+  msg.style.fontSize = "28px";
+  msg.style.marginTop = "20px";
+  msg.innerHTML = "Best decision you've made today 😌💞<br>Happy Valentine’s Day!";
+  document.body.appendChild(msg);
+};
+
   </script>
 
 </body>
 </html>
+
